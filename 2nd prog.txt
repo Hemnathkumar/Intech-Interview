@@ -1,0 +1,33 @@
+def double_comp(st):
+    dcomp=[]
+    alph=[]
+    dig=[]
+    
+    for j in range(0,(len(st)-1),2):
+        alph.append(st[j])
+        dig.append(st[j+1])
+    
+    flag=0
+    for k in range(0,(len(st)//2)-1):
+        if flag==0:
+            dcomp.append(alph[k])
+        else:
+            flag=0
+        if dig[k] == dig[k+1]:
+            dcomp.append(alph[k+1])
+            flag=1
+        else:
+            dcomp.append(dig[k])
+    
+    if dig[-1]==dig[-2]:
+        dcomp.append(dig[-1])
+    else:
+       dcomp.append(alph[-1]+dig[-1]) 
+        
+    dcomp=''.join(dcomp)
+    return dcomp
+
+s=‘a2b2c1a3c3’
+print("Input: " +s)
+print("Double Compressed String: " +double_comp(s))
+

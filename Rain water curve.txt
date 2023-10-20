@@ -1,0 +1,24 @@
+def trap_water(function, left_boundary, right_boundary, dx):
+    total_water = 0
+
+    for x in range(left_boundary, right_boundary, dx):
+        left_wall = function(x)
+        right_wall = max([function(x + i * dx) for i in range(1, dx + 1)])
+        
+        if left_wall > 0 and right_wall > 0:
+            height = min(left_wall, right_wall)
+            width = dx
+            total_water += height * width
+    
+    return total_water
+
+# Example usage:
+def linear_function(x):
+    return -x + 5  # Example linear function: y = -x + 5
+
+left_boundary = 2
+right_boundary = 8
+dx = 1  # Width of each small section
+
+result = trap_water(linear_function, left_boundary, right_boundary, dx)
+print("Units of water trapped:", result)

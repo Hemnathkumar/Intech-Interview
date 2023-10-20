@@ -1,0 +1,25 @@
+def decomp(st):
+    dcomp=[]
+    alph=[]
+    dig=[]
+    c=0
+    for j in range(0,(len(st)-1)):
+        if st[j].isalpha():
+            alph.append(st[j])
+        else:
+            for i in range(c,j):
+                dig.append(st[j])
+                c=j+1
+    d=st[j+1]
+    for k in range(c,j+1):
+        dig.append(d)
+
+    for l in range(0,len(alph)):
+        for m in range(0,int(dig[l])):
+            dcomp.append(alph[l])
+ 
+    dcomp=''.join(dcomp)
+    return dcomp
+s=‘ab2c1ac3’
+print("Input: " +s)
+print("Decompressed String: " +decomp(s))

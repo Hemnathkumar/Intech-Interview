@@ -1,0 +1,25 @@
+def make_change(coins, amount):
+    # Sort the coin denominations in descending order
+    coins.sort(reverse=True)
+    
+    change = []
+    
+    for coin in coins:
+        while amount >= coin:
+            amount -= coin
+            change.append(coin)
+    
+    if amount == 0:
+        return change
+    else:
+        return None  # It's not possible to make exact change with the given denominations
+
+# Example usage:
+coin_denominations = [1, 2, 5, 8, 10]  # Example denominations for US currency
+target_amount = 78.8
+change = make_change(coin_denominations, target_amount)
+
+if change is not None:
+    print("Change: ", change)
+else:
+    print("Exact change is not possible with the given denominations.")

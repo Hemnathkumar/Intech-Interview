@@ -1,0 +1,50 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+class MinStack:
+    def __init__(self):
+        self.stack = []  # Main stack to store elements
+        self.min_stack = []  # Auxiliary stack to store minimum values
+
+    def push(self, value):
+        self.stack.append(value)
+        if not self.min_stack or value <= self.min_stack[-1]:
+            self.min_stack.append(value)
+
+    def pop(self):
+        if not self.stack:
+            return None  # Stack is empty
+        if self.stack[-1] == self.min_stack[-1]:
+            self.min_stack.pop()
+        return self.stack.pop()
+
+    def top(self):
+        if not self.stack:
+            return None  # Stack is empty
+        return self.stack[-1]
+
+    def get_min(self):
+        if not self.min_stack:
+            return None  # Stack is empty
+        return self.min_stack[-1]
+
+# Example usage:
+stack = MinStack()
+stack.push(3)
+stack.push(5)
+stack.push(2)
+stack.push(1)
+
+print("Current Stack:")
+print(stack.stack)  # [3, 5, 2, 1]
+print("Corresponding Min Stack:")
+print(stack.min_stack)
+print("Current Minimum:")
+print(stack.get_min())  # 1
+
+stack.pop()
+stack.pop()
+
+print("Current Stack after popping:")
+print(stack.stack)  # [3, 5]
+print("Current Minimum after popping:")
+print(stack.get_min())  # 3

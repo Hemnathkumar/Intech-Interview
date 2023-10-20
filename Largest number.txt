@@ -1,0 +1,12 @@
+def large(n):
+    i=1
+    res=0
+    while ((n//i) > 0):
+        temp = ((n//(i * 10))*i + (n % i))
+        i*=10
+        if (temp>res):
+            res=temp
+    return res
+
+n=23435
+print("The largest number after removing a digit is:",large(n))

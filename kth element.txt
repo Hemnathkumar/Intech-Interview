@@ -1,0 +1,38 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+class ListNode:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+def find_kth_to_last(head, k):
+    p1 = head
+    p2 = head
+
+    # Move p2 k nodes ahead
+    for _ in range(k):
+        if p2 is None:
+            return None  # List length is less than k
+
+        p2 = p2.next
+
+    # Move both p1 and p2 one node at a time until p2 reaches the end
+    while p2.next is not None:
+        p1 = p1.next
+        p2 = p2.next
+
+    return p1.value
+
+# Example usage:
+head = ListNode(1)
+head.next = ListNode(2)
+head.next.next = ListNode(3)
+head.next.next.next = ListNode(4)
+head.next.next.next.next = ListNode(5)
+
+k = 2  # Find the 2nd to last element
+result = find_kth_to_last(head, k)
+if result is not None:
+    print(f"The {k}th to the last element is: {result}")
+else:
+    print(f"The list is too short to find the {k}th to the last element.")
